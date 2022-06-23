@@ -1,0 +1,74 @@
+<style>
+    #_otree-title { display: none; }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: grey">
+    <div class="container-fluid">
+        <div>
+            <b>Period:</b> {{player.round_number}} - <b>{{phase}}</b> 
+        </div>
+        <div style="float: right;">
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal">
+                View Summary of Instructions
+            </button>
+        
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+        
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Instructions</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+        
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                        
+                            <h3>
+                                Summary
+                            </h3>
+                        
+                            <ul>
+                                <li>
+                                    The Chooser chooses between taking money from an L box that contains $5.00 and
+                                    an R box that has a random amount of money (between $0.00 and $10.00).
+                                </li>
+                                <li>
+                                    If the Chooser chooses the L box, there is a 50% chance of the period continuing
+                                    to the offer phase. If the chooser chooses the R box, there is a 25% chance of the
+                                    period continuing to the offer phase.
+                                </li>
+                                <li>
+                                    In the offer phase, the Offeror can make an offer between $0.00 and $5.00. If the
+                                    Chooser accepts, the Offeror gains this money and the chooser loses this money.
+                                </li>
+                                <li>
+                                    If the Chooser rejects the offer, there is a resolution phase where both the Chooser
+                                    and Offeror pay a $1.00 up-front cost. A Chooser who chose the L box has a 50%
+                                    chance of losing an additional $4.00. A Chooser who chose the R box has a 25%
+                                    chance of losing an additional $4.00. If the Chooser loses this additional $4.00, the
+                                    Offeror gains an additional $4.00.
+                                </li>
+                                <li>
+                                    You will be paid for one random period of the experiment (including the initial
+                                    $5.00), for your answers to the five comprehension questions, and for the show-up
+                                    fee.
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<br>

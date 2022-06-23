@@ -1,0 +1,20 @@
+{{ block title }}Payment{{ endblock }}
+{{ block content }}
+
+    <p>
+        Period {{player.payment_period}} was chosen for your payment.
+    </p>
+
+    <p>
+        You made {{player.showup_fee}} for a show-up fee, 
+        {{player.comprehension_payment}} from the comprehension questions,
+        and {{player.selected_payment}} from the randomly chosen period (including the {{Constants.initial_endowment}} from the start).
+    </p>
+
+    <p>
+        You have made {{player.total_payoff}} for the experiment.
+    </p>
+
+    {{ next_button }}
+
+{{ endblock }}

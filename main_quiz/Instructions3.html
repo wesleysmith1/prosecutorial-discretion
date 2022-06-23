@@ -1,0 +1,26 @@
+{{ block content }}
+    
+    <p>
+        The period consists of up to three phases. The first phase is the <b>choosing phase</b>. In
+        the choosing phase, the Chooser chooses between taking money from one of two boxes:
+        (i) the left (“L”) box and (ii) the right (“R”) box. The L box always contains $5.00. The
+        R box contains a random amount of money between $0.00 and $10.00. Each amount of
+        money between $0.00 and $10.00 is equally likely to be in the R box. Only the Chooser
+        will be told the amount of money in the R box; the Chooser will be told the amount of
+        money in the R box before making a decision.
+    </p>
+
+    <p>
+        If the Chooser takes money from the L box, the period has a 50% probability of continuing 
+        to the second phase. If the Chooser takes money from the R box, the period has a
+        25% chance of continuing to second phase. It is as if a four-sided die (numbered 1 through
+        4) is rolled after the Chooser chooses a box. If the Chooser takes money from the L box,
+        the period will continue if the die lands on the number 1 or 2; otherwise, the period ends.
+        If the Chooser takes money from the R box, the period will continue if the die lands on
+        the number 1; otherwise, the period ends. If the period ends here, the Chooser’s earnings
+        for the period would be equal to the contents of their chosen box. The Offeror’s earnings
+        for the period would be $0.00.
+    </p>
+
+    {{ next_button }}
+{{ endblock }}

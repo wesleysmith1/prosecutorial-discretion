@@ -1,0 +1,21 @@
+{{ block title }}Instructions Quiz{{ endblock }}
+{{ block content }}
+    
+    <div>
+        {% if correct %}
+            You answered correctly.
+        {% else %}
+            You answered incorrectly.
+        {% endif %}
+    </div>
+    
+    <br>
+
+    <div class="card card-body bg-light">
+        The correct answer was: {{solution}}
+   </div>
+
+   <br>
+    
+    {{ next_button }}
+{{ endblock }}

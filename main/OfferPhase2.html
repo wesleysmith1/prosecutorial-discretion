@@ -1,0 +1,16 @@
+{{ block title }}Offer Phase:{{ endblock }}
+{{ block content }}
+
+    {{ include Constants.header_template }}
+
+    <div class="card bg-light m-3">
+
+        <div class="card-body">
+            <h4>
+                The offerer has offered {{player.group.offer}}.
+            </h4>
+        </div>
+    </div>
+{{ formfields }}
+{{ next_button }}
+{{ endblock }}

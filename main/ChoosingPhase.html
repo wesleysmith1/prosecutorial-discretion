@@ -1,0 +1,41 @@
+{{ block title }}
+    Choosing Phase
+{{ endblock }}
+{{ block content }}
+
+    {{ include Constants.header_template }}
+
+    <p>Please select one of the following options. The L box contains $5.00 and the R box contains {{r_box_amount}}.</p>
+
+    <div style="display: flex;">
+        <div class="card bg-light m-3" style="width: 50%; cursor: pointer;" onclick="lSelected()">
+            <div class="card-body" style="text-align: center;">
+                <p style="font-size: 100px;">L Box</p>
+            </div>
+        </div>
+        <div class="card bg-light m-3" style="width: 50%; cursor: pointer;" onclick="rSelected()">
+            <div class="card-body" style="text-align: center;">
+                <p style="font-size: 100px;">R Box</p>
+            </div>
+        </div>
+    </div>  
+
+    <input id="choice" name="l_box_selected" type="text" style="display: none">
+    <button id="submit" style="display: none;">hidden submit button</button>
+
+    <script>
+        function submitForm() {
+            $('#submit').click()
+        }
+        function rSelected() {
+            // R selected
+            $('#choice').val('False')
+            submitForm()
+        }
+        function lSelected() {
+            // L selected
+            $('#choice').val('True')
+            submitForm()
+        }
+    </script>
+{{ endblock }}

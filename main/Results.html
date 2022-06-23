@@ -1,0 +1,137 @@
+{{ block title }}Period {{player.round_number}} Results:{{ endblock }}
+{{ block content }}
+
+    {{ include Constants.header_template }}
+
+    {{ if is_chooser }}
+
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <p>The period ended immediately after the {{final_stage}} phase.</p>
+
+                <p>In the choosing phase, the chooser selected {{box_selected}}.</p>
+
+                <!-- <p>Box amount: {{box_amount}}</p> -->
+
+                {{ if player.group.charged }} 
+                    <p>In the offer phase, an offer of {{player.group.offer}} was made.</p>
+
+                    {% if player.group.offer_accepted %}
+                        <p>This offer was accepted. </p>
+                    {% else %}
+                        <p>This offer was not accepted. </p>
+                        <p>
+                            In the resolution phase, both the offeror and chooser paid a cost of {{trial_fee}},
+                                {% if player.group.prosecuted %}
+                                    <span>
+                                        and you paid an additional {{trial_charge}} in the resolution phase.
+                                    </span>
+                                {% else %}
+                                    <span>
+                                        and there was no further change in payoffs from the resolution phase.
+                                    </span>
+                                {% endif %}                                
+                        </p>
+                    {% endif %}
+                {{ endif }}
+            </div>
+        </div>
+
+        <!-- =======chooser payment breakdown======== -->
+
+        <p>You selected the {{box_selected}} box which had {{box_amount}}.</p>
+
+        {{ if player.group.charged }} 
+
+            <p>{{player.group.offer}} was offered in the offer phase.</p>
+
+            {% if player.group.offer_accepted %}
+                <p>You accepted the offer. </p>
+            {% else %}
+                <p>You rejected the offer. </p>
+
+                {% if player.group.prosecuted %}
+                    <p>
+                        You lost {{chooser_prosecuted_total_trial}} in the resolution phase.
+                    </p>
+                {% else %}
+                    <p>
+                        You lost {{trial_fee}} in the resolution phase.
+                    </p>
+                {% endif %}                                
+            {% endif %}
+        {{ endif }}
+
+        <!-- =================================== -->
+
+    {{ endif }}
+
+            
+
+    {{ if not is_chooser }}
+
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <p>The period ended immediately after the {{final_stage}} phase.</p>
+
+                <!-- <p>In the choosing phase, the chooser selected {{box_selected}}.</p> -->
+
+                <!-- <p>Box amount: {{box_amount}}</p> -->
+
+                {{ if player.group.charged }} 
+                    <p>In the offer phase, an offer of {{player.group.offer}} was made.</p>
+
+                    {% if player.group.offer_accepted %}
+                        <p>This offer was accepted. </p>
+                    {% else %}
+                        <p>This offer was not accepted. </p>
+                        <p>
+                            In the resolution phase, both the offeror and chooser paid a cost of {{trial_fee}},
+                                {% if player.group.prosecuted %}
+                                    <span>
+                                        and you earned {{trial_charge}}.
+                                    </span>
+                                {% else %}
+                                    <span>
+                                        and there was no further change in payoffs from the resolution phase.
+                                    </span>
+                                {% endif %}                                
+                        </p>
+                    {% endif %}
+
+                {{ endif }}
+            </div>
+        </div>
+
+        <!-- =======offeror payment breakdown======== -->
+        
+        {{ if player.group.charged }} 
+
+            <p>You offered {{player.group.offer}} in the offer phase.</p>
+
+            {% if player.group.offer_accepted %}
+                <p>This phase was accepted. </p>
+            {% else %}
+                <p>This phase was rejected. </p>
+                <p>
+                   
+                {% if player.group.prosecuted %}
+                    You gained {{offeror_prosecuted_total_trial}} in the resolution phase.
+                {% else %}
+                    You lost {{trial_fee}} in the resolution phase.
+                {% endif %}                                
+                </p>
+            {% endif %}
+
+        {{ endif }}
+
+        <!-- =================================== -->
+
+    {{ endif }}
+
+    <p>Your payoff: {{player.payoff}}</p>
+
+    <p>{{ next_button }}</p>
+
+
+{{ endblock }}
