@@ -32,7 +32,7 @@ class Constants(BaseConstants):
     q_i = config[5] # innocent defendant probability of conviction
     q_g = config[6] # guilty defendant probability of being conviction
 
-    w_upperbar = config[7] # max opportunity cost for defendant inclusive
+    w_upperbar = cu(config[7]) # max opportunity cost for defendant inclusive
     b_lowerbar = cu(config[8]) # the lowest offer that a offeror can offer under this inclusive restriction.
 
     b_upperbar = cu(5) # todo this needs to be taken from the 
@@ -52,9 +52,9 @@ class Player(BasePlayer):
             widget=widgets.RadioSelect,
             choices=[
                 [1, "The L box contains $10.00 and the R box has a random amount of money (between $0.00 and $5.00)."],
-                [2, f"The L box contains $10.00 and the R box has a random amount of money (between $5.00 and {cu(Constants.w_upperbar)})."],
-                [3, f"The L box contains {Constants.v} and the R box has a random amount of money (between $5.00 and {cu(Constants.w_upperbar)})."],
-                [4, f"The L box contains {Constants.v} and the R box has a random amount of money (between $0.00 and {cu(Constants.w_upperbar)})."],
+                [2, f"The L box contains $10.00 and the R box has a random amount of money (between $5.00 and {Constants.w_upperbar})."],
+                [3, f"The L box contains {Constants.v} and the R box has a random amount of money (between $5.00 and {Constants.w_upperbar})."],
+                [4, f"The L box contains {Constants.v} and the R box has a random amount of money (between $0.00 and {Constants.w_upperbar})."],
             ]
         )
     q2 = models.BooleanField(
@@ -142,7 +142,7 @@ class Quiz1Feedback(Page):
     @staticmethod
     def vars_for_template(player: Player):
         correct = player.q1 == Constants.quiz_answers[0]
-        solution = f"The L box contains {Constants.v} and the R box has a random amount of money (between $0.00 and {cu(Constants.w_upperbar)})."
+        solution = f"The L box contains {Constants.v} and the R box has a random amount of money (between $0.00 and {Constants.w_upperbar})."
         return dict(correct=correct, solution=solution)
 
 

@@ -36,7 +36,7 @@ class Constants(BaseConstants):
     q_i = config.config[5] # innocent defendant probability of conviction
     q_g = config.config[6] # guilty defendant probability of being conviction
 
-    w_upperbar = config.config[7] # max opportunity cost for defendant inclusive
+    w_upperbar = cu(config.config[7]) # max opportunity cost for defendant inclusive
     b_lowerbar = cu(config.config[8]) # the lowest offer that a offeror can offer under this inclusive restriction.
 
     b_upperbar = cu(5) # todo this needs to be taken from the 
