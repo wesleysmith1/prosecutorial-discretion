@@ -1,6 +1,6 @@
 from otree.api import *
 
-
+from config import config
 
 
 doc = """
@@ -18,6 +18,25 @@ class Constants(BaseConstants):
     quiz_answers = [4, True, True, 3, 2,]
     question_earnings = cu(.5) # todo: this should be deleted
 
+    # treatment variables
+    # todo: change the variable descriptions. these are a litle mixed
+    v =  cu(config[0]) # fixed total that is earned with L box (legal)
+    s = cu(config[1]) # what defendant pays prosecutor if found guilty at trial
+    c = cu(config[2]) # trial cost for both defendant and Offeror 
+
+    # arrested probability
+    g_i = config[3] # prob of getting arrested if the individual does not commit the crime
+    g_g = config[4] # prob of getting arrsted if individual commits crime 
+
+    # conviction probability
+    q_i = config[5] # innocent defendant probability of conviction
+    q_g = config[6] # guilty defendant probability of being conviction
+
+    w_upperbar = config[7] # max opportunity cost for defendant inclusive
+    b_lowerbar = cu(config[8]) # the lowest offer that a offeror can offer under this inclusive restriction.
+
+    b_upperbar = cu(5) # todo this needs to be taken from the 
+
 
 class Subsession(BaseSubsession):
     pass
@@ -33,9 +52,9 @@ class Player(BasePlayer):
             widget=widgets.RadioSelect,
             choices=[
                 [1, "The L box contains $10.00 and the R box has a random amount of money (between $0.00 and $5.00)."],
-                [2, "The L box contains $10.00 and the R box has a random amount of money (between $5.00 and $10.00)."],
-                [3, "The L box contains $5.00 and the R box has a random amount of money (between $5.00 and $10.00)."],
-                [4, "The L box contains $5.00 and the R box has a random amount of money (between $0.00 and $10.00)."],
+                [2, f"The L box contains $10.00 and the R box has a random amount of money (between $5.00 and {cu(Constants.w_upperbar)})."],
+                [3, f"The L box contains {Constants.v} and the R box has a random amount of money (between $5.00 and {cu(Constants.w_upperbar)})."],
+                [4, f"The L box contains {Constants.v} and the R box has a random amount of money (between $0.00 and {cu(Constants.w_upperbar)})."],
             ]
         )
     q2 = models.BooleanField(
@@ -123,7 +142,7 @@ class Quiz1Feedback(Page):
     @staticmethod
     def vars_for_template(player: Player):
         correct = player.q1 == Constants.quiz_answers[0]
-        solution = "The L box contains $5.00 and the R box has a random amount of money (between $0.00 and $10.00)."
+        solution = f"The L box contains {Constants.v} and the R box has a random amount of money (between $0.00 and {cu(Constants.w_upperbar)})."
         return dict(correct=correct, solution=solution)
 
 
