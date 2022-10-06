@@ -8,7 +8,6 @@ SESSION_CONFIGS = [
         name='main', 
         app_sequence=['main_quiz', 'main', 'payment',], 
         num_demo_participants=2,
-        treatment=pooling,
     ),
     dict(
         name='payment', 
@@ -63,4 +62,4 @@ SECRET_KEY = '3158669109454'
 INSTALLED_APPS = ['otree']
 
 PARTICIPANT_FIELDS = ['payment_period', 'selected_payment', 'showup_fee', 'comprehension_payment', 'total_payoff']
-SESSION_FIELDS = ['treatment']
+SESSION_FIELDS = []
