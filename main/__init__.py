@@ -28,9 +28,9 @@ class Constants(BaseConstants):
     s = cu(config.config[1]) # what defendant pays prosecutor if found guilty at trial
     c = cu(config.config[2]) # trial cost for both defendant and Offeror 
 
-    # arrested probability
-    g_i = config.config[3] # prob of getting arrested if the individual does not commit the crime
-    g_g = config.config[4] # prob of getting arrsted if individual commits crime 
+    # charged probability
+    g_i = config.config[3] # prob of getting charged if the individual does not commit the crime
+    g_g = config.config[4] # prob of getting charged if individual commits crime 
 
     # conviction probability
     q_i = config.config[5] # innocent defendant probability of conviction
@@ -43,7 +43,23 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    # treatment variables
+    v =  models.FloatField(initial=cu(config.config[0])) # fixed total that is earned with L box (legal)
+    s = models.CurrencyField(initial=cu(config.config[1])) # what defendant pays prosecutor if found guilty at trial
+    c = models.CurrencyField(initial=cu(config.config[2])) # trial cost for both defendant and Offeror 
+
+    # arrested probability
+    g_i = models.FloatField(initial=config.config[3]) # prob of getting arrested if the individual does not commit the crime
+    g_g = models.FloatField(initial=config.config[4]) # prob of getting arrsted if individual commits crime 
+
+    # conviction probability
+    q_i = models.FloatField(initial=config.config[5]) # innocent defendant probability of conviction
+    q_g = models.FloatField(initial=config.config[6]) # guilty defendant probability of being conviction
+
+    w_upperbar = models.CurrencyField(initial=cu(config.config[7])) # max opportunity cost for defendant inclusive
+    b_lowerbar = models.CurrencyField(initial=cu(config.config[8]))
+    b_upperbar = models.CurrencyField(initial=Constants.b_upperbar)
+    # ===============================================
 
 
 class Group(BaseGroup):
@@ -126,8 +142,6 @@ def trial_payment(group: Group):
     offeror.payoff += Constants.s
     offeror.resolution_cost += Constants.s
 
-def creating_session(subsession):
-    subsession.group_randomly(fixed_id_in_group=True)
 
 def creating_session(subsession):
     # generate I box money 

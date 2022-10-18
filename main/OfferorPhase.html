@@ -4,7 +4,7 @@
     {{ include Constants.header_template }}
 
     <div class="mb-3 _formfield">
-        <label class="col-form-label" for="id_offer">Please choose an offer greater than or equal to $0.00 and less than or equal to $5.00.</label>
+        <label class="col-form-label" for="id_offer">Please choose an offer greater than or equal to {{Constants.b_lowerbar}} and less than or equal to $5.00.</label>
         <div class="controls">
             <div class="input-group input-group-narrow">
                 <input type="number" class="form-control" id="id_offer" name="offer" required="" value="" step=".01" pattern="^\d*(\.\d{0,2})?$">
