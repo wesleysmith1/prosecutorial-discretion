@@ -11,7 +11,7 @@ doc = """"""
 class Constants(BaseConstants):
     name_in_url = 'main'
     players_per_group = 2
-    num_rounds = 10 #todo this should be 25
+    num_rounds = 40
     # instructions_template = 'main/instructions.html'
     # Initial amount allocated to the dictator
 
