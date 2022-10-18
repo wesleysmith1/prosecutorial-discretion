@@ -44,9 +44,9 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     # treatment variables
-    v =  models.FloatField(initial=cu(config.config[0])) # fixed total that is earned with L box (legal)
-    s = models.CurrencyField(initial=cu(config.config[1])) # what defendant pays prosecutor if found guilty at trial
-    c = models.CurrencyField(initial=cu(config.config[2])) # trial cost for both defendant and Offeror 
+    v =  models.FloatField(initial=config.config[0]) # fixed total that is earned with L box (legal)
+    s = models.CurrencyField(initial=config.config[1]) # what defendant pays prosecutor if found guilty at trial
+    c = models.CurrencyField(initial=config.config[2]) # trial cost for both defendant and Offeror 
 
     # arrested probability
     g_i = models.FloatField(initial=config.config[3]) # prob of getting arrested if the individual does not commit the crime
@@ -56,8 +56,8 @@ class Subsession(BaseSubsession):
     q_i = models.FloatField(initial=config.config[5]) # innocent defendant probability of conviction
     q_g = models.FloatField(initial=config.config[6]) # guilty defendant probability of being conviction
 
-    w_upperbar = models.CurrencyField(initial=cu(config.config[7])) # max opportunity cost for defendant inclusive
-    b_lowerbar = models.CurrencyField(initial=cu(config.config[8]))
+    w_upperbar = models.CurrencyField(initial=config.config[7]) # max opportunity cost for defendant inclusive
+    b_lowerbar = models.CurrencyField(initial=config.config[8])
     b_upperbar = models.CurrencyField(initial=Constants.b_upperbar)
     # ===============================================
 
