@@ -25,6 +25,7 @@ class Player(BasePlayer):
     showup_fee = models.CurrencyField()
     comprehension_payment = models.CurrencyField()
     total_payoff = models.CurrencyField()
+    full_name = models.StringField(label="Please enter your full name")
 
 
 # FUNCTIONS
@@ -34,7 +35,9 @@ def creating_session(subsession):
 
 # PAGES
 class Payment(Page):
-    
+    form_model = 'player'
+    form_fields = ['full_name']
+
     @staticmethod
     def vars_for_template(player: Player):
 
@@ -56,5 +59,9 @@ class Payment(Page):
         player.total_payoff = player.showup_fee + player.comprehension_payment + player.selected_payment
 
         return dict()
+        
 
-page_sequence = [Payment]
+class FinalInstructions(Page):
+    pass
+
+page_sequence = [Payment, FinalInstructions]
