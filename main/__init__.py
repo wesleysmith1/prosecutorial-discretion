@@ -144,6 +144,9 @@ def trial_payment(group: Group):
 
 
 def creating_session(subsession):
+    
+    subsession.group_randomly()
+
     # generate I box money 
     for player in subsession.get_players():
 
