@@ -17,4 +17,4 @@ truncated_wealth = (5, 4, 1, .25, .5, .25, .5, 6.15 ,0)
 restricted_plea_bargain = (5, 4, 1, .25, .5, .25, .5, 10, 3)
 
 # define treatment 
-config = truncated_wealth
+config = restricted_plea_bargain

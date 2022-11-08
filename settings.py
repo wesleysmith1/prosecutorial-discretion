@@ -13,6 +13,11 @@ SESSION_CONFIGS = [
         num_demo_participants=1
     ),
     dict(
+        name='game', 
+        app_sequence=['main'], 
+        num_demo_participants=2
+    ),
+    dict(
         name='instructions', 
         app_sequence=['main_quiz'], 
         num_demo_participants=1
